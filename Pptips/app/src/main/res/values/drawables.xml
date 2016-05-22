@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <drawable name="transparent">#00000000</drawable>
+    <drawable name="main_color_bg">#ff6639B5</drawable>
+    
+    <drawable name="drop_down_popup_bg">#e0f4ff</drawable>
+    
+<!--     底部消息输入栏背景 -->
+    <drawable name="inputbottom_bg_upper">#ffffff</drawable>
+    
+<!--     拨号盘 -->
+    <drawable name="tab_layout_bg">#ffffff</drawable>
+    <drawable name="drawable_white">#ffffff</drawable>
+    <drawable name="drawable_white_press">#e7e7e7</drawable>
+    <drawable name="drawable_no_found">#fdfdfd</drawable>
+    <drawable name="common_shadow_bottom">#e7e7e7</drawable>
+    <drawable name="dark_title_bg">#803f3f3f</drawable>
+    
+</resources>

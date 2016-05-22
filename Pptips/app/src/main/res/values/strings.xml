@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">随时随记</string>
+    <string name="history">记录</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+
+    <integer name="miniAnimTime">50</integer>
+    <integer name="shortAnimTime">150</integer>
+    <integer name="mediumAnimTime">250</integer>
+    <integer name="longAnimTime">300</integer>
+
+    <string name="navigation_main">我的笔记</string>
+    <string name="navigation_favor">我的收藏</string>
+    <string name="navigation_about">关于</string>
+    <string name="action_settings">设置</string>
+    
+    <string name="wait_pls">敬请期待</string>
+
+    <!--main 页面 -->
+    <string name="tips_schema">您已经记录了%d条笔记</string>
+    <string name="tips_0_info">"您还没有记录笔记，加油啊!"</string>
+
+
+</resources>

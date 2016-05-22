@@ -1,0 +1,81 @@
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="#ffffff">
+    
+    <RelativeLayout
+        android:id="@+id/main_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/appbar"
+            layout="@layout/include_toolbar" />
+
+        <FrameLayout
+            android:id="@+id/frame_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/appbar"
+            android:scrollbars="none"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        
+        <RelativeLayout
+            android:id="@+id/oper_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="20dp">
+            
+            <View 
+                android:id="@+id/id_mid"
+                android:layout_width="1dp"
+            	android:layout_height="1dp"
+            	android:layout_centerInParent="true"/>
+            
+	       	<android.support.design.widget.FloatingActionButton
+	            android:id="@+id/add_view"
+	            android:layout_height="wrap_content"
+	            android:layout_width="wrap_content"
+	            android:layout_toLeftOf="@id/id_mid"
+	            android:src="@drawable/add_new"
+	            android:layout_marginRight="15dp"
+	            android:scaleType="center"
+	            app:fabSize="normal"
+	            app:borderWidth="5dp"
+	            app:elevation="15dp"
+	            app:rippleColor="#33728dff"
+	            app:backgroundTint="#6639B5"
+	            app:pressedTranslationZ="12dp" />
+	       	
+	       	<android.support.design.widget.FloatingActionButton
+	            android:id="@+id/history"
+	            android:layout_height="wrap_content"
+	            android:layout_width="wrap_content"
+	            android:layout_gravity="center"
+	            android:layout_toRightOf="@id/id_mid"
+	            android:layout_marginLeft="15dp"
+	            android:src="@drawable/all_notes"
+	            android:scaleType="center"
+	            app:fabSize="normal"
+	            app:borderWidth="5dp"
+	            app:elevation="15dp"
+	            app:rippleColor="#33728dff"
+	            app:backgroundTint="#6639B5"
+	            app:pressedTranslationZ="12dp" />
+        </RelativeLayout>
+    </RelativeLayout>
+        
+   <!-- 左侧的抽屉 -->
+   <android.support.design.widget.NavigationView
+        android:id="@+id/navigation_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/navigation_header"
+        app:menu="@menu/drawer" />
+
+</android.support.v4.widget.DrawerLayout>

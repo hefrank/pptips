@@ -1,0 +1,26 @@
+<resources>
+	<color name="default_bg_color">#fdfdfd</color>
+	<!-- 主色调 紫色-->
+	<color name="main_color">#ff6639B5</color>
+	<color name="main_color_dark">#ff7a2be2</color>
+    <color name="half_main_color">#886639B5</color>
+    <!-- 主色调 黄色-->
+    <color name="main_color_yellow">#ffe5ad05</color>
+    <!-- 主色调 白色-->
+    <color name="main_color_white">#ffffffff</color>
+    <color name="black_overlay">#66000000</color>
+    <color name="dark_txt">#191919</color>
+
+    <color name="primary">#009688</color>
+    <color name="primary_dark">#00897b</color>
+    <color name="primary_light">#B2DFDB</color>
+    <color name="accent">#ffb74d</color>
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#727272</color>
+    <color name="third_text">#88727272</color>
+    <color name="icons">#FFFFFF</color>
+    <color name="divider">#B6B6B6</color>
+
+    <color name="window_background">#FFF5F5F5</color>
+    <color name="tab_bgcolor">#eeeeee</color>    
+</resources>
