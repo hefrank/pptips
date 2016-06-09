@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.format.DateFormat;
 import android.view.MenuItem;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -52,6 +53,8 @@ public class AddNewItemActivity extends AppCompatActivity {
 	    mInputMethodManager = (InputMethodManager) Utils.getSystemService(Context.INPUT_METHOD_SERVICE);
 		mTipsDataManager = TipsDataManager.getInstance();
 		setContentView(R.layout.add_new_item);
+		getWindow().setSoftInputMode(
+				WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
 		mToolbar = (Toolbar) findViewById(R.id.toolbar);
 		setSupportActionBar(mToolbar);
