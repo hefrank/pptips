@@ -3,6 +3,7 @@ package com.ppamy.pptips.datamgr;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.ppamy.pptips.AppEnv;
 import com.ppamy.pptips.MainApplication;
 import com.ppamy.pptips.dbs.tips_dao.DaoMaster;
 import com.ppamy.pptips.dbs.tips_dao.DaoSession;
@@ -41,7 +42,7 @@ public class TipsDataManager {
 
     private TipsDataManager() {
         // 使用greenDao
-        SQLiteOpenHelper helper = new TipsDaoOpenHelper(MainApplication.getApp(), "tips.db", null);
+        SQLiteOpenHelper helper = new TipsDaoOpenHelper(MainApplication.getApp(), AppEnv.DB_TIPS_NAME, null);
         db = helper.getWritableDatabase();
         daoMaster = new DaoMaster(db);
         // TODO: 不保留每次的query结果，有优化空间
@@ -166,4 +167,7 @@ public class TipsDataManager {
         return query.list();
     }
 
+    public void destory(){
+        instance = null;
+    }
 }

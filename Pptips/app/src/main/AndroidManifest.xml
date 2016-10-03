@@ -65,9 +65,11 @@
                   android:theme="@style/BaseAppTheme" >
               </activity> -->
 
-        <service android:name=".BgService">
+        <service android:name=".BgService" android:process=":bgs"/>
+        <receiver android:name=".receiver.Receiver1" android:process=":bgs"/>
 
-        </service>
+        <service android:name=".service.DeamonService" android:process=":dm_cp"/>
+        <receiver android:name=".receiver.Receiver2" android:process=":dm_cp"/>
     </application>
 
 </manifest>

@@ -1,6 +1,7 @@
 package com.ppamy.pptips;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
 public class ActivityBase extends Activity {
@@ -24,4 +25,5 @@ public class ActivityBase extends Activity {
     protected void onDestroy() {
         super.onDestroy();
     }
+
 }

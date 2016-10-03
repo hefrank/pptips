@@ -3,13 +3,17 @@ package com.ppamy.pptips;
 import android.app.Service;
 import android.content.ClipData;
 import android.content.ClipboardManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.graphics.PixelFormat;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
+import android.os.RemoteException;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -19,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ppamy.pptips.service.DeamonService;
 import com.ppamy.pptips.ui.AddNewItemActivity;
 
 import java.lang.ref.WeakReference;
@@ -53,6 +58,37 @@ public class BgService extends Service{
     final static int MSG_WHAT_SHOW_TIPS_WIN = 0;
     final static int MSG_WHAT_CLOSE_TIPS_WIN = 1;
 //    private final int MSG_WHAT_SHOW_TIPS_WIN = 2;
+
+    private IBinder mToken,mBinderDeamon;
+    private MyConn mMyConn;
+    private IBinder mBinder = new IMainApp.Stub(){
+
+        @Override
+        public void setMainToken(IBinder token) throws RemoteException {
+            mBinderDeamon = token;
+//            mBinderDeamon.linkToDeath(mMyDeathReceipent,0);
+        }
+    };
+    private class MyConn implements ServiceConnection {
+
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            Log.e("KKK_kkk","bind deamon 服务 成功");
+            IDeamon deamon = IDeamon.Stub.asInterface(service);
+            try {
+                deamon.setDeamonToken(mToken);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            Log.e("KKK_kkk","demon 服务被杀死");
+            Toast.makeText(BgService.this,"demon 服务被杀死，重启之",Toast.LENGTH_SHORT).show();
+            startService(new Intent(BgService.this,DeamonService.class));
+        }
+    }
 
     private static class UiHandler extends Handler{
         private WeakReference<BgService> bgService;
@@ -105,6 +141,9 @@ public class BgService extends Service{
     @Override
     public void onCreate() {
         super.onCreate();
+        if (mMyConn == null){
+            mMyConn = new MyConn();
+        }
         mUiHandler = new UiHandler(this);
         wm = (WindowManager) getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
         mClipboardManager = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
@@ -122,7 +161,22 @@ public class BgService extends Service{
 
             }
         });
+
+        doBind();
+
     }
+
+    private void doBind(){
+        startService(new Intent(BgService.this,DeamonService.class));
+        mUiHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                boolean bb = bindService(new Intent(BgService.this, DeamonService.class),mMyConn,Context.BIND_AUTO_CREATE);
+                Log.e("KKK_kkk","bind deamon 服务 result is:"+bb);
+            }
+        },500);
+    }
+
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
@@ -132,7 +186,7 @@ public class BgService extends Service{
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
-        return null;
+        return mBinder;
     }
 
     @Override
@@ -149,6 +203,7 @@ public class BgService extends Service{
             wm.removeView(floatView);
             isAdded = false;
         }
+
         LayoutInflater layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         floatView = layoutInflater.inflate(R.layout.goto_popup_window, null);
 

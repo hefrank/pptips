@@ -5,6 +5,15 @@
             android:id="@+id/navigation_item_notes"
             android:icon="@drawable/ic_favorite"
             android:title="@string/navigation_main" />
+        <item
+            android:id="@+id/navigation_save_2_sd"
+            android:icon="@drawable/ic_favorite"
+            android:title="@string/navigation_save2sd" />
+
+        <item
+            android:id="@+id/navigation_load_from_sd"
+            android:icon="@drawable/ic_favorite"
+            android:title="@string/navigation_loadfrom2sd" />
 
         <item
             android:id="@+id/navigation_item_favor"

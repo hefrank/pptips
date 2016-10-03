@@ -12,6 +12,8 @@ import android.content.res.Resources;
 import android.graphics.Point;
 import android.os.Build;
 import android.os.Environment;
+import android.os.Process;
+import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.view.Display;
@@ -309,5 +311,10 @@ public class Utils {
         String sret = String.valueOf(cchars);
         cchars = null;
         return sret;
+    }
+
+    /**自杀*/
+    public static void killSelf(){
+        Process.killProcess(Process.myPid());
     }
 }

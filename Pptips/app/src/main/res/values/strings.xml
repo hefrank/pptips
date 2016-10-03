@@ -12,10 +12,18 @@
     <integer name="longAnimTime">300</integer>
 
     <string name="navigation_main">我的笔记</string>
+    <string name="navigation_save2sd">本地保存</string>
+    <string name="navigation_loadfrom2sd">本地加载</string>
     <string name="navigation_favor">我的收藏</string>
     <string name="navigation_about">关于</string>
     <string name="action_settings">设置</string>
-    
+
+    <string name="save2sd_success">本地保存成功</string>
+    <string name="save2sd_error">本地保存失败</string>
+
+    <string name="loadsd_error">SD卡加载失败，本地尚未备份</string>
+    <string name="loadsd_success">SD卡加载数据成功</string>
+
     <string name="wait_pls">敬请期待</string>
 
     <!--main 页面 -->

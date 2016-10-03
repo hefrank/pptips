@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 
+import com.ppamy.pptips.service.DeamonService;
 import com.ppamy.pptips.util.Utils;
 
 public class MainApplication extends Application {
@@ -12,17 +13,22 @@ public class MainApplication extends Application {
     public static MainApplication getApp(){
         return sApp;
     }
+
+
     @Override
-    protected void attachBaseContext(Context base) {
+    public void attachBaseContext(Context base) {
     	super.attachBaseContext(base);
     	sApp = this;
     }
-    
+
     @Override
     public void onCreate() {
     	super.onCreate();
         Intent itt = new Intent(this,BgService.class);
         startService(itt);
+
+        startService(new Intent(this, DeamonService.class));
+
 //    	Utils.copyFile("/data/data/com.ppamy.pptips/databases/tips.db", "/sdcard/tips.db");
 //    	Utils.copyFile("/sdcard/tips.db","/data/data/com.ppamy.pptips/databases/tips.db");
     }

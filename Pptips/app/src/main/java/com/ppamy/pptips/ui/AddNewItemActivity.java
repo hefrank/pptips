@@ -3,6 +3,8 @@ package com.ppamy.pptips.ui;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.AssetManager;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.v7.app.ActionBar;
@@ -238,5 +240,20 @@ public class AddNewItemActivity extends AppCompatActivity {
 				mToolbar.setTitle(mStrLocAddr);
 			}
 		}
+	}
+
+	@Override
+	public AssetManager getAssets() {
+		return super.getAssets();
+	}
+
+	@Override
+	public ClassLoader getClassLoader() {
+		return super.getClassLoader();
+	}
+
+	@Override
+	public Resources.Theme getTheme() {
+		return super.getTheme();
 	}
 }
